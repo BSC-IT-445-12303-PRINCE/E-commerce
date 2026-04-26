@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import { ArrowLeft, Star } from 'lucide-react';
-import { db } from '../../data/mockData';
+import { mockProducts } from '../../data/mockData';
 import AddToCartButton from './AddToCartButton';
 
-// Generate static paths for all products
+// Generate static paths for all products - use mockProducts directly for build-time
 export function generateStaticParams() {
-  const products = db.getProducts();
-  return products.map((product) => ({
+  return mockProducts.map((product) => ({
     id: product.id,
   }));
 }
@@ -16,7 +15,8 @@ interface ProductPageProps {
 }
 
 export default function ProductDetailPage({ params }: ProductPageProps) {
-  const product = db.getProductById(params.id);
+  // Use mockProducts directly for lookup during build
+  const product = mockProducts.find(p => p.id === params.id);
 
   if (!product) {
     return (

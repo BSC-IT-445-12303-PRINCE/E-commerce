@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
-import { db } from '../data/mockData';
+import { mockProducts } from '../data/mockData';
 
 export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -12,7 +12,7 @@ export default function ProductsPage() {
   const [sortBy, setSortBy] = useState<'price-low' | 'price-high' | 'rating' | 'name'>('name');
   const [showFilters, setShowFilters] = useState(false);
 
-  const products = db.getProducts();
+  const products = mockProducts;
   const categories = ['All', ...new Set(products.map(p => p.category))];
 
   const filteredProducts = useMemo(() => {

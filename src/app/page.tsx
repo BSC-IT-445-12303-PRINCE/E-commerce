@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, ShoppingBag, Truck, Shield, Headphones, RotateCcw, Sparkles, Zap, TrendingUp, Star } from 'lucide-react';
 import ProductCard from './components/ProductCard';
-import { db } from './data/mockData';
+import { mockProducts } from './data/mockData';
 
 const features = [
   {
@@ -36,13 +36,13 @@ const features = [
 
 const stats = [
   { value: '10K+', label: 'Products' },
-  { value: '50K+', label: 'Customers' },
+  { value: '50K+', label: 'Happy Customers' },
   { value: '99%', label: 'Satisfaction' },
   { value: '24h', label: 'Delivery' },
 ];
 
 export default function Home() {
-  const featuredProducts = db.getProducts().slice(0, 4);
+  const featuredProducts = mockProducts.slice(0, 4);
 
   return (
     <div className="min-h-screen bg-slate-50">
